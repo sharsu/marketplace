@@ -16,7 +16,7 @@ Messaging platform is implemented using an embedded AMQ broker.
 
 ### Limitations
 
-* Two prime concerns (security and reliability) are not dealt in this implementation.
+* Two prime concerns (security and high-availability) are not dealt in this implementation.
 * Domain models are kept to minimal. 
 * Validation are not in place to validate orders.
 * Test coverage requires improvement. 
@@ -24,7 +24,7 @@ Messaging platform is implemented using an embedded AMQ broker.
 ![](others/test-coverage.png)
 
 ## API Documentation
-Swagger is used for API documentation and swagger ui url is [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html).
+Swagger is used for API documentation and swagger ui url is [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html) (when application is running on localhost).
 
 ![](others/swagger-ui.png)
 
@@ -61,18 +61,14 @@ of the order to be cancelled.
 Summary of live orders can be retrieved by calling the endpoint `/silver-bars/order-book/summary/{orderType}`
 where orderType parameter could be `BUY` or `SELL`. 
 
-@PathVariable: orderType - order type; permissible values are BUY or SELL.
+@PathVariable: orderType - order type; permissible values are BUY and SELL.
 
 # Design Considerations
 
-## Reliability
-No implementation has been done to achieve this feature. But the service is small and can be containarized 
-that will help achieve this goal. 
-
 ## Scalability
-Load-balanced endpoints will allow to have multiple instances of this services running in parallel. 
+Load-balanced endpoints will allow to have multiple instances of the services running in parallel. 
 However to achieve scalability for asynchronous communication; choice of underlying infrastructure 
-(broker, etc...) will be key. 
+(messaging broker, etc...) will be the key. 
 
 ## Security 
 Security implementation is not in the scope of this exercise.
