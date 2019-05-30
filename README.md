@@ -75,8 +75,8 @@ Security implementation is not in the scope of this exercise.
 
 # Running the Project
 ## Requirements
-Gradle 4.4+
-JDK 1.8
+* Gradle 4.4+
+* JDK 1.8
 
 ## How to run
 To run the project locally, use the command:
