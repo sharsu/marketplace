@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
+    }
+}
+
+group 'com.inspiware.marketplace.services'
+version '0.0.1-SNAPSHOT'
+description = ''
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'marketplace-preciousmetals-service'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:2.0.1.RELEASE"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    reports.html.enabled = false
+}
+
+task testReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    reportOn test
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-cache"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework:spring-context-support"
+    compile ("org.springframework.boot:spring-boot-configuration-processor") {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+    }
+    compile "org.springframework.boot:spring-boot-starter-activemq"
+    compile "org.springframework.integration:spring-integration-jms"
+    compile "org.apache.activemq:activemq-broker"
+    compile "org.apache.activemq:activemq-kahadb-store"
+    compile "com.fasterxml.jackson.core:jackson-databind"
+    compile "javax.cache:cache-api"
+    compile "org.ehcache:ehcache"
+
+    compile "io.springfox:springfox-swagger2:2.6.1"
+    compile "io.springfox:springfox-swagger-ui:2.6.1"
+
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile "org.joda:joda-money:1.0.1"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+
+    testCompile "junit:junit"
+    testCompile "org.mockito:mockito-core"
+    testCompile "com.github.tomakehurst:wiremock:1.58"
+    testCompile "org.apache.activemq.tooling:activemq-junit"
+}
+

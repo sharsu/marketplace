@@ -1,0 +1,57 @@
+[
+  {
+    "type": "BUY",
+    "quantity": {
+      "value": 10.40,
+      "unit": "kg"
+    },
+    "pricePerKg": {
+      "value": 314,
+      "currency": "GBP"
+    }
+  },
+  {
+    "type": "BUY",
+    "quantity": {
+      "value": 6.10,
+      "unit": "kg"
+    },
+    "pricePerKg": {
+      "value": 311,
+      "currency": "GBP"
+    }
+  },
+  {
+    "type": "BUY",
+    "quantity": {
+      "value": 3.40,
+      "unit": "kg"
+    },
+    "pricePerKg": {
+      "value": 310,
+      "currency": "GBP"
+    }
+  },
+  {
+    "type": "BUY",
+    "quantity": {
+      "value": 3.60,
+      "unit": "kg"
+    },
+    "pricePerKg": {
+      "value": 307,
+      "currency": "GBP"
+    }
+  },
+  {
+    "type": "BUY",
+    "quantity": {
+      "value": 6.60,
+      "unit": "kg"
+    },
+    "pricePerKg": {
+      "value": 306,
+      "currency": "GBP"
+    }
+  }
+]
