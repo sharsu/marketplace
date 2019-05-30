@@ -2,6 +2,17 @@
 As name suggest this solution is a REST service implementation that enable "Live Order Board" for a company called Silver 
 Bars Marketplace. Services provide market demand for silver bars.
 
+## Contents
+- [Overview](#overview)
+- [API Documentation](#api-documentation)
+- [Features](#features)
+- [Register an order](#register-an-order)
+- [Cancel a registered order](#cancel-a-registered-order)
+- [Get summary information of live orders](#get-summary-information-of-live-orders)
+- [Design Considerations](#design-considerations)
+- [Running the Project](#running-the-project)
+
+## Overview
 ![](others/marketplace-precious-metals.svg)
 
 A simple version of services are implemented with some consideration towards transactional boundaries. The service does 
@@ -13,15 +24,6 @@ Spring framework is used extensively for a quick turnaround. Two different ways 
 * Asynchronous messaging for communication (limited to registration of a new order)
 
 Messaging platform is implemented using an embedded AMQ broker.
-
-### Limitations
-
-* Two prime concerns (security and high-availability) are not dealt in this implementation.
-* Domain models are kept to minimal. 
-* Validation are not in place to validate orders.
-* Test coverage requires improvement. 
-
-![](others/test-coverage.png)
 
 ## API Documentation
 Swagger is used for API documentation and swagger ui url is [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html) (when application is running on localhost).
@@ -64,6 +66,13 @@ where orderType parameter could be `BUY` or `SELL`.
 @PathVariable: orderType - order type; permissible values are BUY and SELL.
 
 # Design Considerations
+## Limitations
+* Two prime concerns (security and high-availability) are not dealt in this implementation.
+* Domain models are kept to minimal. 
+* Validation are not in place to validate orders.
+* Test coverage requires improvement. 
+
+![](others/test-coverage.png)
 
 ## Scalability
 Load-balanced endpoints will allow to have multiple instances of the services running in parallel. 
@@ -74,15 +83,32 @@ However to achieve scalability for asynchronous communication; choice of underly
 Security implementation is not in the scope of this exercise.
 
 # Running the Project
-## Requirements
+## Building the Project
+To build the project, environment must have:
 * Gradle 4.4+
 * JDK 1.8
+
+Clone the repository with the following command:
+```shell
+git clone https://github.com/sudheshrajan/marketplace.git
+```
+
+Change the directory to `marketplace`:
+```shell
+cd marketplace
+```
+
+Build the project using gradle:
+```shell
+./gradlew --refresh-dependencies build
+```
 
 ## How to run
 To run the project locally, use the command:
 
-**./gradlew bootRun**
+```shell
+./gradlew bootRun
+```
 
-It will start the REST services, start an local ActiveMQ broker and also start the Spring integration flows, 
-initialize input/output channels.
+It will start the REST services, start a local ActiveMQ broker and also start the Spring integration flows.
 
